@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		748518E1301C74C900A3C2F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 748518D4301C74C900A3C2F4 /* AppDelegate.m */; };
+		748518E2301C74C900A3C2F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 748518D9301C74C900A3C2F4 /* main.m */; };
+		748518E3301C74C900A3C2F4 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 748518DD301C74C900A3C2F4 /* SceneDelegate.m */; };
+		748518E4301C74C900A3C2F4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 748518DF301C74C900A3C2F4 /* ViewController.m */; };
+		748518E5301C74C900A3C2F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 748518D5301C74C900A3C2F4 /* Assets.xcassets */; };
+		74851901301C8A0000A3C2F4 /* YDInputFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74851912301C8A0000A3C2F4 /* YDInputFormatter.m */; };
+		74851902301C8A0000A3C2F4 /* YDInputFormatterConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 74851914301C8A0000A3C2F4 /* YDInputFormatterConfig.m */; };
+		74851903301C8A0000A3C2F4 /* YDInputFormatterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 74851916301C8A0000A3C2F4 /* YDInputFormatterEngine.m */; };
+		74851904301C8A0000A3C2F4 /* YDInputFormatterResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 74851918301C8A0000A3C2F4 /* YDInputFormatterResult.m */; };
+		74851905301C8A0000A3C2F4 /* UITextField+YDInputFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7485191A301C8A0000A3C2F4 /* UITextField+YDInputFormatter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		748518B6301C74BB00A3C2F4 /* YDInputFormatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YDInputFormatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		748518D3301C74C900A3C2F4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		748518D4301C74C900A3C2F4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		748518D5301C74C900A3C2F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		748518D6301C74C900A3C2F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		748518D7301C74C900A3C2F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		748518D9301C74C900A3C2F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		748518DA301C74C900A3C2F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		748518DC301C74C900A3C2F4 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		748518DD301C74C900A3C2F4 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		748518DE301C74C900A3C2F4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		748518DF301C74C900A3C2F4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		74851911301C8A0000A3C2F4 /* YDInputFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDInputFormatter.h; sourceTree = "<group>"; };
+		74851912301C8A0000A3C2F4 /* YDInputFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDInputFormatter.m; sourceTree = "<group>"; };
+		74851913301C8A0000A3C2F4 /* YDInputFormatterConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDInputFormatterConfig.h; sourceTree = "<group>"; };
+		74851914301C8A0000A3C2F4 /* YDInputFormatterConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDInputFormatterConfig.m; sourceTree = "<group>"; };
+		74851915301C8A0000A3C2F4 /* YDInputFormatterEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDInputFormatterEngine.h; sourceTree = "<group>"; };
+		74851916301C8A0000A3C2F4 /* YDInputFormatterEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDInputFormatterEngine.m; sourceTree = "<group>"; };
+		74851917301C8A0000A3C2F4 /* YDInputFormatterResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDInputFormatterResult.h; sourceTree = "<group>"; };
+		74851918301C8A0000A3C2F4 /* YDInputFormatterResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDInputFormatterResult.m; sourceTree = "<group>"; };
+		74851919301C8A0000A3C2F4 /* UITextField+YDInputFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+YDInputFormatter.h"; sourceTree = "<group>"; };
+		7485191A301C8A0000A3C2F4 /* UITextField+YDInputFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+YDInputFormatter.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		748518B3301C74BB00A3C2F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		748518AD301C74BB00A3C2F4 = {
+			isa = PBXGroup;
+			children = (
+				748518E0301C74C900A3C2F4 /* YDInputFormatter */,
+				748518B7301C74BB00A3C2F4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		748518B7301C74BB00A3C2F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				748518B6301C74BB00A3C2F4 /* YDInputFormatter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		748518E0301C74C900A3C2F4 /* YDInputFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				748518D3301C74C900A3C2F4 /* AppDelegate.h */,
+				748518D4301C74C900A3C2F4 /* AppDelegate.m */,
+				748518D5301C74C900A3C2F4 /* Assets.xcassets */,
+				74851921301C8A0000A3C2F4 /* Formatter */,
+				748518D6301C74C900A3C2F4 /* Info.plist */,
+				748518D8301C74C900A3C2F4 /* LaunchScreen.storyboard */,
+				748518D9301C74C900A3C2F4 /* main.m */,
+				748518DB301C74C900A3C2F4 /* Main.storyboard */,
+				748518DC301C74C900A3C2F4 /* SceneDelegate.h */,
+				748518DD301C74C900A3C2F4 /* SceneDelegate.m */,
+				748518DE301C74C900A3C2F4 /* ViewController.h */,
+				748518DF301C74C900A3C2F4 /* ViewController.m */,
+			);
+			path = YDInputFormatter;
+			sourceTree = "<group>";
+		};
+		74851921301C8A0000A3C2F4 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				74851922301C8A0000A3C2F4 /* Core */,
+				74851923301C8A0000A3C2F4 /* UIKit */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		74851922301C8A0000A3C2F4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				74851911301C8A0000A3C2F4 /* YDInputFormatter.h */,
+				74851912301C8A0000A3C2F4 /* YDInputFormatter.m */,
+				74851913301C8A0000A3C2F4 /* YDInputFormatterConfig.h */,
+				74851914301C8A0000A3C2F4 /* YDInputFormatterConfig.m */,
+				74851915301C8A0000A3C2F4 /* YDInputFormatterEngine.h */,
+				74851916301C8A0000A3C2F4 /* YDInputFormatterEngine.m */,
+				74851917301C8A0000A3C2F4 /* YDInputFormatterResult.h */,
+				74851918301C8A0000A3C2F4 /* YDInputFormatterResult.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		74851923301C8A0000A3C2F4 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				74851919301C8A0000A3C2F4 /* UITextField+YDInputFormatter.h */,
+				7485191A301C8A0000A3C2F4 /* UITextField+YDInputFormatter.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		748518B5301C74BB00A3C2F4 /* YDInputFormatter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 748518CE301C74BE00A3C2F4 /* Build configuration list for PBXNativeTarget "YDInputFormatter" */;
+			buildPhases = (
+				748518B2301C74BB00A3C2F4 /* Sources */,
+				748518B3301C74BB00A3C2F4 /* Frameworks */,
+				748518B4301C74BB00A3C2F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YDInputFormatter;
+			packageProductDependencies = (
+			);
+			productName = YDInputFormatter;
+			productReference = 748518B6301C74BB00A3C2F4 /* YDInputFormatter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		748518AE301C74BB00A3C2F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					748518B5301C74BB00A3C2F4 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+				};
+			};
+			buildConfigurationList = 748518B1301C74BB00A3C2F4 /* Build configuration list for PBXProject "YDInputFormatter" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 748518AD301C74BB00A3C2F4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 748518B7301C74BB00A3C2F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				748518B5301C74BB00A3C2F4 /* YDInputFormatter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		748518B4301C74BB00A3C2F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				748518E5301C74C900A3C2F4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		748518B2301C74BB00A3C2F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				748518E1301C74C900A3C2F4 /* AppDelegate.m in Sources */,
+				748518E2301C74C900A3C2F4 /* main.m in Sources */,
+				748518E3301C74C900A3C2F4 /* SceneDelegate.m in Sources */,
+				748518E4301C74C900A3C2F4 /* ViewController.m in Sources */,
+				74851901301C8A0000A3C2F4 /* YDInputFormatter.m in Sources */,
+				74851902301C8A0000A3C2F4 /* YDInputFormatterConfig.m in Sources */,
+				74851903301C8A0000A3C2F4 /* YDInputFormatterEngine.m in Sources */,
+				74851904301C8A0000A3C2F4 /* YDInputFormatterResult.m in Sources */,
+				74851905301C8A0000A3C2F4 /* UITextField+YDInputFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		748518D8301C74C900A3C2F4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				748518D7301C74C900A3C2F4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		748518DB301C74C900A3C2F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				748518DA301C74C900A3C2F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		748518CF301C74BE00A3C2F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YDInputFormatter/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lizuxi.YDInputFormatter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		748518D0301C74BE00A3C2F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YDInputFormatter/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lizuxi.YDInputFormatter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		748518D1301C74BE00A3C2F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		748518D2301C74BE00A3C2F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		748518B1301C74BB00A3C2F4 /* Build configuration list for PBXProject "YDInputFormatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				748518D1301C74BE00A3C2F4 /* Debug */,
+				748518D2301C74BE00A3C2F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		748518CE301C74BE00A3C2F4 /* Build configuration list for PBXNativeTarget "YDInputFormatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				748518CF301C74BE00A3C2F4 /* Debug */,
+				748518D0301C74BE00A3C2F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 748518AE301C74BB00A3C2F4 /* Project object */;
+}
