@@ -1,18 +1,20 @@
 # YDInputFormatter
 
+[简体中文](README.zh-CN.md)
+
 `YDInputFormatter` is an Objective-C input formatting component for `UITextField`.
-It focuses on grouped input such as bank cards, phone numbers, identity numbers,
-and license keys, while keeping caret movement stable during typing, deletion,
-middle insertion, and paste.
+It is designed for grouped input such as bank cards, phone numbers, identity
+numbers, and license keys while keeping caret movement stable during typing,
+deletion, middle insertion, and paste.
 
-## Features
+## Highlights
 
-- Arbitrary prefix groups and repeat groups
+- Flexible prefix groups and repeat groups
 - Custom separators such as `" "` and `"-"`
 - Maximum raw length limiting
-- Caret restoration after formatting
-- Paste handling for multiple characters
-- Deleting separators without breaking raw content
+- Stable caret restoration after formatting
+- Multi-character paste handling
+- Safe separator deletion without breaking raw content
 - Skips formatting during Chinese IME marked text input
 - Reusable `Engine + Config + Result + UITextField` adapter design
 
@@ -27,13 +29,16 @@ middle insertion, and paste.
 ### CocoaPods
 
 ```ruby
-pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.0'
+source 'https://cdn.cocoapods.org/'
+
+pod 'YDInputFormatter', '0.1.0'
 ```
 
-After the pod is published to CocoaPods Trunk, you can also use:
+If the CocoaPods CDN has not propagated to your environment yet, you can
+temporarily install from GitHub:
 
 ```ruby
-pod 'YDInputFormatter'
+pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.0'
 ```
 
 ## Quick Start
@@ -42,6 +47,12 @@ If your project enables modules:
 
 ```objc
 @import YDInputFormatter;
+```
+
+Or use the umbrella header:
+
+```objc
+#import <YDInputFormatter/YDInputFormatter.h>
 ```
 
 Bank card example:
@@ -56,7 +67,7 @@ formatter.maxLength = 16;
 [self.cardTextField yd_enableFormatter:formatter];
 ```
 
-Identity number example with custom character filter:
+Identity number example with a custom character filter:
 
 ```objc
 YDInputFormatter *formatter = [[YDInputFormatter alloc] init];
@@ -77,7 +88,7 @@ formatter.filter = ^BOOL(unichar character) {
 ## Public API
 
 - `YDInputFormatter`
-  The high-level formatter object used by business code.
+  High-level formatter object used by business code.
 - `YDInputFormatterConfig`
   Stores grouping, separator, max length, and custom filter rules.
 - `YDInputFormatterResult`
@@ -85,44 +96,35 @@ formatter.filter = ^BOOL(unichar character) {
 - `UITextField+YDInputFormatter`
   Binds a formatter to a text field and takes over input formatting.
 
-## Project Layout
+## Demo
 
-```text
-YDInputFormatter/
-├── YDInputFormatter/
-│   ├── Formatter/
-│   │   ├── Core/
-│   │   └── UIKit/
-│   └── ...
-├── YDInputFormatter.podspec
-├── README.md
-└── LICENSE
-```
-
-## Local Demo
-
-This repository includes a demo app target in the same Xcode project.
-The demo currently covers:
+This repository includes a demo app target in the same Xcode project. The demo
+currently covers:
 
 - Bank card
 - Phone number
 - Identity number
 - License key
 
-## Repository
+## Links
 
 - GitHub: [youshiyuandian/YDInputFormatter](https://github.com/youshiyuandian/YDInputFormatter)
+- CocoaPods: [YDInputFormatter](https://cocoapods.org/pods/YDInputFormatter)
 
-## Release Checklist
+## Development
 
-Then run:
+Validate the podspec locally:
 
 ```bash
 pod lib lint YDInputFormatter.podspec --allow-warnings
 ```
 
-If you want to publish to CocoaPods Trunk:
+Publish a new version:
 
 ```bash
 pod trunk push YDInputFormatter.podspec --allow-warnings
 ```
+
+## License
+
+MIT. See [LICENSE](LICENSE).
