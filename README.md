@@ -96,6 +96,29 @@ formatter.filter = ^BOOL(unichar character) {
 - `UITextField+YDInputFormatter`
   Binds a formatter to a text field and takes over input formatting.
 
+## Integration Notes
+
+- Set your business delegate before calling `yd_enableFormatter:` and avoid
+  replacing `textField.delegate` afterwards. The formatter installs its own
+  delegate wrapper and forwards callbacks to the previous delegate.
+- In `textField:shouldChangeCharactersInRange:replacementString:`, let your
+  external delegate decide allow or deny only. Avoid mutating `textField.text`,
+  `selectedTextRange`, or running another formatter there.
+- `editingChanged` observers receive the formatted text after the formatter has
+  handled the input. Avoid rewriting text or caret position again in those
+  callbacks to prevent jumps or double-processing.
+- If you assign `textField.text` programmatically, the text may need an
+  additional formatting pass. Refresh the field with the formatter before
+  relying on the displayed result.
+- Chinese IME marked text is intentionally skipped during composition. This is
+  usually correct, but you should still test with the keyboards and input
+  methods used by your app.
+- `textField.text` is the formatted display value. If your backend needs the
+  raw value without separators, extract or recompute the raw text explicitly.
+- This library is best suited for short structured inputs such as bank cards,
+  phone numbers, identity numbers, and license keys. It is not intended for
+  rich text or complex Unicode editing scenarios.
+
 ## Demo
 
 This repository includes a demo app target in the same Xcode project. The demo

@@ -95,6 +95,19 @@ formatter.filter = ^BOOL(unichar character) {
 - `UITextField+YDInputFormatter`
   负责把格式化能力绑定到 `UITextField` 上。
 
+## 接入注意事项
+
+- 先设置业务侧的 `delegate`，再调用 `yd_enableFormatter:`。启用后尽量不要再重设
+  `textField.delegate`，因为库内部会安装自己的 delegate 包装层，并把回调转发给之前的 delegate。
+- 在 `textField:shouldChangeCharactersInRange:replacementString:` 里，外部 delegate
+  最好只负责“是否允许输入”的判断，不要再去改 `textField.text`、`selectedTextRange`
+  或者再跑一遍自己的格式化逻辑。
+- `editingChanged` 监听拿到的是格式化之后的文本。为了避免光标跳动或重复处理，不建议在这些回调里再次重写文本或光标位置。
+- 如果你是程序化地直接设置 `textField.text`，通常还需要再补一次格式化，再依赖最终显示结果。
+- 中文输入法联想阶段会被刻意跳过格式化，这通常是正确的，但仍建议结合你们实际使用的输入法做真机验证。
+- `textField.text` 保存的是带分隔符的展示文本。如果后端需要的是不带 separator 的原始值，需要业务层显式提取或重新计算。
+- 这个库更适合银行卡、手机号、身份证、License Key 这类短文本结构化输入，不适合富文本或复杂 Unicode 编辑场景。
+
 ## Demo
 
 仓库自带同一份 Xcode 工程下的演示 App，目前覆盖：
