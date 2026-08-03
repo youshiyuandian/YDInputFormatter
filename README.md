@@ -31,17 +31,19 @@ deletion, middle insertion, and paste.
 ```ruby
 source 'https://cdn.cocoapods.org/'
 
-pod 'YDInputFormatter', '0.1.0'
+pod 'YDInputFormatter', '0.1.1'
 ```
 
 If the CocoaPods CDN has not propagated to your environment yet, you can
 temporarily install from GitHub:
 
 ```ruby
-pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.0'
+pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.1'
 ```
 
 ## Quick Start
+
+### Automatic delegate-wrapping mode
 
 If your project enables modules:
 
@@ -85,6 +87,29 @@ formatter.filter = ^BOOL(unichar character) {
 [self.identityTextField yd_enableFormatter:formatter];
 ```
 
+### Manual business delegate mode
+
+Use this mode when you want to keep your own `UITextFieldDelegate`:
+
+```objc
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    return [textField yd_formatWithFormatter:self.phoneFormatter
+               shouldChangeCharactersInRange:range
+                           replacementString:string];
+}
+```
+
+### Manual formatting after assigning `textField.text`
+
+Use this when text is assigned programmatically:
+
+```objc
+self.cardTextField.text = @"8888888888888888";
+[self.cardTextField yd_applyFormattingWithFormatter:self.cardFormatter];
+```
+
 ## Public API
 
 - `YDInputFormatter`
@@ -94,7 +119,8 @@ formatter.filter = ^BOOL(unichar character) {
 - `YDInputFormatterResult`
   Returns formatted text, raw text, and the calculated caret offset.
 - `UITextField+YDInputFormatter`
-  Binds a formatter to a text field and takes over input formatting.
+  Supports automatic delegate-wrapping mode, manual delegate formatting, and
+  manual formatting after programmatic text assignment.
 
 ## Integration Notes
 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'YDInputFormatter'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'UITextField input formatter with grouping and caret restoration.'
   s.description      = <<-DESC
   YDInputFormatter is an Objective-C input formatting component for UITextField.

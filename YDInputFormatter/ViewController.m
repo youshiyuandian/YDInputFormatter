@@ -10,7 +10,12 @@
 #import "UITextField+YDInputFormatter.h"
 #import "YDInputFormatter.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
+
+@property (nonatomic, strong) YDInputFormatter *delegatePhoneFormatter;
+@property (nonatomic, strong) UITextField *delegatePhoneTextField;
+@property (nonatomic, strong) YDInputFormatter *manualAssignmentFormatter;
+@property (nonatomic, strong) UITextField *manualAssignmentTextField;
 
 - (UIView *)demoSectionWithTitle:(NSString *)title
                           detail:(NSString *)detail
@@ -19,12 +24,16 @@
                     keyboardType:(UIKeyboardType)keyboardType
              autocapitalization:(UITextAutocapitalizationType)autocapitalization
                        formatter:(YDInputFormatter *)formatter;
+- (UIView *)businessDelegateDemoSection;
+- (UIView *)manualAssignmentDemoSection;
 - (UILabel *)titleLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color;
 - (UITextField *)textFieldWithPlaceholder:(NSString *)placeholder
                                   rawValue:(NSString *)rawValue
                               keyboardType:(UIKeyboardType)keyboardType
                        autocapitalization:(UITextAutocapitalizationType)autocapitalization
                                  formatter:(YDInputFormatter *)formatter;
+- (UIButton *)demoButtonWithTitle:(NSString *)title action:(SEL)action;
+- (void)fillManualAssignmentExample;
 - (YDInputFormatter *)bankCardFormatter;
 - (YDInputFormatter *)phoneFormatter;
 - (YDInputFormatter *)identityFormatter;
@@ -52,7 +61,7 @@
     UILabel *titleLabel = [self titleLabelWithText:@"YDInputFormatter Demo"
                                               font:[UIFont boldSystemFontOfSize:28.0]
                                              color:[UIColor labelColor]];
-    UILabel *descriptionLabel = [self titleLabelWithText:@"支持任意分组、separator、光标恢复、粘贴、中间插入、删除 separator 和中文输入法收起后的自动格式化。"
+    UILabel *descriptionLabel = [self titleLabelWithText:@"支持自动接管、业务 delegate 手动格式化、手动赋值后刷新，以及任意分组、separator、光标恢复、粘贴、中间插入、删除 separator 和中文输入法收起后的自动格式化。"
                                                     font:[UIFont systemFontOfSize:15.0]
                                                    color:[UIColor secondaryLabelColor]];
     descriptionLabel.numberOfLines = 0;
@@ -87,6 +96,8 @@
                                                    keyboardType:UIKeyboardTypeASCIICapable
                                             autocapitalization:UITextAutocapitalizationTypeAllCharacters
                                                       formatter:[self licenseFormatter]]];
+    [contentStack addArrangedSubview:[self businessDelegateDemoSection]];
+    [contentStack addArrangedSubview:[self manualAssignmentDemoSection]];
 
     UILayoutGuide *safeArea = self.view.safeAreaLayoutGuide;
     [NSLayoutConstraint activateConstraints:@[
@@ -149,6 +160,99 @@
     return container;
 }
 
+- (UIView *)businessDelegateDemoSection {
+    self.delegatePhoneFormatter = [self phoneFormatter];
+
+    UIView *container = [[UIView alloc] init];
+    container.translatesAutoresizingMaskIntoConstraints = NO;
+    container.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    container.layer.cornerRadius = 16.0;
+
+    UIStackView *stack = [[UIStackView alloc] init];
+    stack.translatesAutoresizingMaskIntoConstraints = NO;
+    stack.axis = UILayoutConstraintAxisVertical;
+    stack.spacing = 10.0;
+    [container addSubview:stack];
+
+    UILabel *titleLabel = [self titleLabelWithText:@"业务 Delegate 手动格式化"
+                                              font:[UIFont boldSystemFontOfSize:18.0]
+                                             color:[UIColor labelColor]];
+    UILabel *detailLabel = [self titleLabelWithText:@"业务侧自己持有 delegate，在 shouldChangeCharactersInRange 里调用 yd_formatWithFormatter:...。"
+                                               font:[UIFont systemFontOfSize:13.0]
+                                              color:[UIColor secondaryLabelColor]];
+    detailLabel.numberOfLines = 0;
+
+    UITextField *textField = [self textFieldWithPlaceholder:@"138 1234 5678"
+                                                    rawValue:@"13812345678"
+                                                keyboardType:UIKeyboardTypeNumberPad
+                                         autocapitalization:UITextAutocapitalizationTypeNone
+                                                   formatter:nil];
+    textField.delegate = self;
+    [textField yd_applyFormattingWithFormatter:self.delegatePhoneFormatter];
+    self.delegatePhoneTextField = textField;
+
+    [stack addArrangedSubview:titleLabel];
+    [stack addArrangedSubview:detailLabel];
+    [stack addArrangedSubview:textField];
+
+    [NSLayoutConstraint activateConstraints:@[
+        [stack.topAnchor constraintEqualToAnchor:container.topAnchor constant:16.0],
+        [stack.leadingAnchor constraintEqualToAnchor:container.leadingAnchor constant:16.0],
+        [stack.trailingAnchor constraintEqualToAnchor:container.trailingAnchor constant:-16.0],
+        [stack.bottomAnchor constraintEqualToAnchor:container.bottomAnchor constant:-16.0],
+    ]];
+
+    return container;
+}
+
+- (UIView *)manualAssignmentDemoSection {
+    self.manualAssignmentFormatter = [self bankCardFormatter];
+
+    UIView *container = [[UIView alloc] init];
+    container.translatesAutoresizingMaskIntoConstraints = NO;
+    container.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    container.layer.cornerRadius = 16.0;
+
+    UIStackView *stack = [[UIStackView alloc] init];
+    stack.translatesAutoresizingMaskIntoConstraints = NO;
+    stack.axis = UILayoutConstraintAxisVertical;
+    stack.spacing = 10.0;
+    [container addSubview:stack];
+
+    UILabel *titleLabel = [self titleLabelWithText:@"手动赋值后格式化"
+                                              font:[UIFont boldSystemFontOfSize:18.0]
+                                             color:[UIColor labelColor]];
+    UILabel *detailLabel = [self titleLabelWithText:@"直接赋值 textField.text 后，再调用 yd_applyFormattingWithFormatter: 刷新展示和光标。"
+                                               font:[UIFont systemFontOfSize:13.0]
+                                              color:[UIColor secondaryLabelColor]];
+    detailLabel.numberOfLines = 0;
+
+    UITextField *textField = [self textFieldWithPlaceholder:@"8888 8888 8888 8888"
+                                                    rawValue:@""
+                                                keyboardType:UIKeyboardTypeNumberPad
+                                         autocapitalization:UITextAutocapitalizationTypeNone
+                                                   formatter:nil];
+    self.manualAssignmentTextField = textField;
+    [self fillManualAssignmentExample];
+
+    UIButton *fillButton = [self demoButtonWithTitle:@"重新赋值并格式化"
+                                              action:@selector(fillManualAssignmentExample)];
+
+    [stack addArrangedSubview:titleLabel];
+    [stack addArrangedSubview:detailLabel];
+    [stack addArrangedSubview:textField];
+    [stack addArrangedSubview:fillButton];
+
+    [NSLayoutConstraint activateConstraints:@[
+        [stack.topAnchor constraintEqualToAnchor:container.topAnchor constant:16.0],
+        [stack.leadingAnchor constraintEqualToAnchor:container.leadingAnchor constant:16.0],
+        [stack.trailingAnchor constraintEqualToAnchor:container.trailingAnchor constant:-16.0],
+        [stack.bottomAnchor constraintEqualToAnchor:container.bottomAnchor constant:-16.0],
+    ]];
+
+    return container;
+}
+
 - (UILabel *)titleLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color {
     UILabel *label = [[UILabel alloc] init];
     label.translatesAutoresizingMaskIntoConstraints = NO;
@@ -179,6 +283,32 @@
     [textField.heightAnchor constraintEqualToConstant:46.0].active = YES;
     [textField yd_enableFormatter:formatter];
     return textField;
+}
+
+- (UIButton *)demoButtonWithTitle:(NSString *)title action:(SEL)action {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    [button setTitle:title forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightSemibold];
+    button.contentEdgeInsets = UIEdgeInsetsMake(10.0, 14.0, 10.0, 14.0);
+    button.backgroundColor = [UIColor tertiarySystemGroupedBackgroundColor];
+    button.layer.cornerRadius = 10.0;
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
+- (void)fillManualAssignmentExample {
+    self.manualAssignmentTextField.text = @"8888888888888888";
+    [self.manualAssignmentTextField yd_applyFormattingWithFormatter:self.manualAssignmentFormatter];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == self.delegatePhoneTextField) {
+        return [textField yd_formatWithFormatter:self.delegatePhoneFormatter
+                   shouldChangeCharactersInRange:range
+                               replacementString:string];
+    }
+    return YES;
 }
 
 - (YDInputFormatter *)bankCardFormatter {

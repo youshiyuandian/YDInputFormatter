@@ -30,17 +30,19 @@
 ```ruby
 source 'https://cdn.cocoapods.org/'
 
-pod 'YDInputFormatter', '0.1.0'
+pod 'YDInputFormatter', '0.1.1'
 ```
 
 如果你当前环境里的 CocoaPods CDN 还没有同步到这个版本，可以先临时使用
 GitHub tag 方式安装：
 
 ```ruby
-pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.0'
+pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.1'
 ```
 
 ## 快速开始
+
+### 自动接管 delegate 模式
 
 如果项目启用了模块：
 
@@ -84,6 +86,29 @@ formatter.filter = ^BOOL(unichar character) {
 [self.identityTextField yd_enableFormatter:formatter];
 ```
 
+### 业务 delegate 手动格式化模式
+
+如果你希望继续保留自己的 `UITextFieldDelegate`，可以在业务代理方法里这样写：
+
+```objc
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    return [textField yd_formatWithFormatter:self.phoneFormatter
+               shouldChangeCharactersInRange:range
+                           replacementString:string];
+}
+```
+
+### 手动赋值 `textField.text` 后刷新格式
+
+如果文本是代码里直接赋值的，可以这样补一次格式化：
+
+```objc
+self.cardTextField.text = @"8888888888888888";
+[self.cardTextField yd_applyFormattingWithFormatter:self.cardFormatter];
+```
+
 ## 对外 API
 
 - `YDInputFormatter`
@@ -93,7 +118,7 @@ formatter.filter = ^BOOL(unichar character) {
 - `YDInputFormatterResult`
   返回格式化后的文本、原始文本以及计算出的光标偏移。
 - `UITextField+YDInputFormatter`
-  负责把格式化能力绑定到 `UITextField` 上。
+  同时支持自动接管 delegate、业务 delegate 手动格式化，以及手动赋值后的格式化刷新。
 
 ## 接入注意事项
 

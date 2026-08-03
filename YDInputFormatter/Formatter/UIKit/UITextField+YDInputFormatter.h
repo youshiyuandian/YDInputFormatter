@@ -18,6 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)yd_enableFormatter:(nullable YDInputFormatter *)formatter;
 - (void)yd_disableFormatter;
 
+- (BOOL)yd_formatWithFormatter:(nullable YDInputFormatter *)formatter
+  shouldChangeCharactersInRange:(NSRange)range
+              replacementString:(nullable NSString *)string;
+
+- (void)yd_applyFormattingWithFormatter:(nullable YDInputFormatter *)formatter;
+
 @end
 
 NS_ASSUME_NONNULL_END

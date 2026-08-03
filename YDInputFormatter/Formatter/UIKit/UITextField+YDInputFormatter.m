@@ -20,6 +20,7 @@
 @property (nonatomic, strong, nullable) NSNumber *pendingCaretOffset;
 
 - (instancetype)initWithTextField:(UITextField *)textField formatter:(YDInputFormatter *)formatter;
+- (void)applyResult:(YDInputFormatterResult *)result sendEditingChanged:(BOOL)sendEditingChanged;
 - (void)refreshFormattingPreservingSelection;
 
 @end
@@ -200,6 +201,18 @@
 
 static const void *YDInputFormatterControllerKey = &YDInputFormatterControllerKey;
 
+static YDTextFieldFormatterController *YDInputFormatterControllerForTextField(UITextField *textField,
+                                                                              YDInputFormatter *formatter) {
+    YDTextFieldFormatterController *controller = objc_getAssociatedObject(textField, YDInputFormatterControllerKey);
+    if (controller == nil) {
+        controller = [[YDTextFieldFormatterController alloc] initWithTextField:textField formatter:formatter];
+        objc_setAssociatedObject(textField, YDInputFormatterControllerKey, controller, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    } else {
+        controller.formatter = formatter;
+    }
+    return controller;
+}
+
 @implementation UITextField (YDInputFormatter)
 
 - (YDInputFormatter *)yd_inputFormatter {
@@ -213,17 +226,13 @@ static const void *YDInputFormatterControllerKey = &YDInputFormatterControllerKe
         return;
     }
 
-    YDTextFieldFormatterController *controller = objc_getAssociatedObject(self, YDInputFormatterControllerKey);
-    if (controller == nil) {
-        controller = [[YDTextFieldFormatterController alloc] initWithTextField:self formatter:formatter];
+    YDTextFieldFormatterController *controller = YDInputFormatterControllerForTextField(self, formatter);
+    if (self.delegate != controller) {
         controller.externalDelegate = self.delegate;
-        objc_setAssociatedObject(self, YDInputFormatterControllerKey, controller, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        [self addTarget:controller action:@selector(handleEditingChanged:) forControlEvents:UIControlEventEditingChanged];
-    } else {
-        controller.formatter = formatter;
-        controller.externalDelegate = controller.externalDelegate ?: self.delegate;
     }
 
+    [self removeTarget:controller action:@selector(handleEditingChanged:) forControlEvents:UIControlEventEditingChanged];
+    [self addTarget:controller action:@selector(handleEditingChanged:) forControlEvents:UIControlEventEditingChanged];
     self.delegate = controller;
     [controller refreshFormattingPreservingSelection];
 }
@@ -239,6 +248,42 @@ static const void *YDInputFormatterControllerKey = &YDInputFormatterControllerKe
         self.delegate = controller.externalDelegate;
     }
     objc_setAssociatedObject(self, YDInputFormatterControllerKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)yd_formatWithFormatter:(YDInputFormatter *)formatter
+  shouldChangeCharactersInRange:(NSRange)range
+              replacementString:(NSString *)string {
+    if (formatter == nil) {
+        return YES;
+    }
+
+    UITextRange *markedTextRange = self.markedTextRange;
+    UITextPosition *markedTextPosition = markedTextRange.start;
+    if (markedTextPosition != nil) {
+        return YES;
+    }
+
+    YDTextFieldFormatterController *controller = YDInputFormatterControllerForTextField(self, formatter);
+    YDInputFormatterResult *result = [formatter applyEditToText:self.text
+                                                         range:range
+                                                   replacement:string];
+    [controller applyResult:result sendEditingChanged:YES];
+    return NO;
+}
+
+- (void)yd_applyFormattingWithFormatter:(YDInputFormatter *)formatter {
+    if (formatter == nil) {
+        return;
+    }
+
+    UITextRange *markedTextRange = self.markedTextRange;
+    UITextPosition *markedTextPosition = markedTextRange.start;
+    if (markedTextPosition != nil) {
+        return;
+    }
+
+    YDTextFieldFormatterController *controller = YDInputFormatterControllerForTextField(self, formatter);
+    [controller refreshFormattingPreservingSelection];
 }
 
 @end
