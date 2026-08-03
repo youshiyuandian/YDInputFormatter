@@ -2,6 +2,22 @@
 
 All notable changes to `YDInputFormatter` will be documented in this file.
 
+## [0.1.2] - 2026-08-03
+
+### Added
+
+- Added `formattedTextFromText:` on `YDInputFormatter` for display-only text
+  formatting without binding to `UITextField`
+- Added `yd_setText:withFormatter:` on `UITextField` for directly assigning a
+  raw value and showing the formatted result immediately
+
+### Changed
+
+- Updated the demo app to show pure display formatting and direct formatted text
+  setting on `UITextField`
+- Updated the English and Chinese README examples to cover the new display
+  formatting APIs
+
 ## [0.1.1] - 2026-08-03
 
 ### Added
@@ -33,5 +49,6 @@ All notable changes to `YDInputFormatter` will be documented in this file.
 - CocoaPods packaging for iOS 13.0+
 - Demo app included in the repository
 
+[0.1.2]: https://github.com/youshiyuandian/YDInputFormatter/releases/tag/0.1.2
 [0.1.1]: https://github.com/youshiyuandian/YDInputFormatter/releases/tag/0.1.1
 [0.1.0]: https://github.com/youshiyuandian/YDInputFormatter/releases/tag/0.1.0

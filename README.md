@@ -31,14 +31,14 @@ deletion, middle insertion, and paste.
 ```ruby
 source 'https://cdn.cocoapods.org/'
 
-pod 'YDInputFormatter', '0.1.1'
+pod 'YDInputFormatter', '0.1.2'
 ```
 
 If the CocoaPods CDN has not propagated to your environment yet, you can
 temporarily install from GitHub:
 
 ```ruby
-pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.1'
+pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.2'
 ```
 
 ## Quick Start
@@ -101,6 +101,24 @@ replacementString:(NSString *)string {
 }
 ```
 
+### Format text for display without `UITextField`
+
+Use this mode when you only need a formatted display string:
+
+```objc
+NSString *formattedText = [self.phoneFormatter formattedTextFromText:@"13812345678"];
+```
+
+### Set formatted display text on `UITextField`
+
+Use this mode when you want to put a raw value into a text field and show the
+formatted result immediately:
+
+```objc
+[self.cardTextField yd_setText:@"8888888888888888"
+                 withFormatter:self.cardFormatter];
+```
+
 ### Manual formatting after assigning `textField.text`
 
 Use this when text is assigned programmatically:
@@ -113,14 +131,14 @@ self.cardTextField.text = @"8888888888888888";
 ## Public API
 
 - `YDInputFormatter`
-  High-level formatter object used by business code.
+  High-level formatter object used by business code for input edits and display formatting.
 - `YDInputFormatterConfig`
   Stores grouping, separator, max length, and custom filter rules.
 - `YDInputFormatterResult`
   Returns formatted text, raw text, and the calculated caret offset.
 - `UITextField+YDInputFormatter`
-  Supports automatic delegate-wrapping mode, manual delegate formatting, and
-  manual formatting after programmatic text assignment.
+  Supports automatic delegate-wrapping mode, manual delegate formatting,
+  direct formatted text setting, and manual formatting after programmatic text assignment.
 
 ## Integration Notes
 

@@ -271,6 +271,15 @@ static YDTextFieldFormatterController *YDInputFormatterControllerForTextField(UI
     return NO;
 }
 
+- (void)yd_setText:(NSString *)text withFormatter:(YDInputFormatter *)formatter {
+    self.text = text ?: @"";
+    if (formatter == nil) {
+        return;
+    }
+
+    [self yd_applyFormattingWithFormatter:formatter];
+}
+
 - (void)yd_applyFormattingWithFormatter:(YDInputFormatter *)formatter {
     if (formatter == nil) {
         return;

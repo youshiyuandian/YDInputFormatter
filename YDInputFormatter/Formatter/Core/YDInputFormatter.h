@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (YDInputFormatterResult *)formatText:(nullable NSString *)text
                            caretOffset:(NSUInteger)caretOffset;
 
+- (NSString *)formattedTextFromText:(nullable NSString *)text;
+
 @end
 
 NS_ASSUME_NONNULL_END

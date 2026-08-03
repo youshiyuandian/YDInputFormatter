@@ -83,4 +83,10 @@
                             config:self.config];
 }
 
+- (NSString *)formattedTextFromText:(NSString *)text {
+    NSString *sourceText = text ?: @"";
+    return [self formatText:sourceText
+                caretOffset:sourceText.length].formattedText;
+}
+
 @end

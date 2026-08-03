@@ -24,6 +24,7 @@
                     keyboardType:(UIKeyboardType)keyboardType
              autocapitalization:(UITextAutocapitalizationType)autocapitalization
                        formatter:(YDInputFormatter *)formatter;
+- (UIView *)displayFormattingDemoSection;
 - (UIView *)businessDelegateDemoSection;
 - (UIView *)manualAssignmentDemoSection;
 - (UILabel *)titleLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color;
@@ -61,7 +62,7 @@
     UILabel *titleLabel = [self titleLabelWithText:@"YDInputFormatter Demo"
                                               font:[UIFont boldSystemFontOfSize:28.0]
                                              color:[UIColor labelColor]];
-    UILabel *descriptionLabel = [self titleLabelWithText:@"支持自动接管、业务 delegate 手动格式化、手动赋值后刷新，以及任意分组、separator、光标恢复、粘贴、中间插入、删除 separator 和中文输入法收起后的自动格式化。"
+    UILabel *descriptionLabel = [self titleLabelWithText:@"支持自动接管、业务 delegate 手动格式化、纯文本格式化显示、直接设置 TextField 显示文本，以及任意分组、separator、光标恢复、粘贴、中间插入、删除 separator 和中文输入法收起后的自动格式化。"
                                                     font:[UIFont systemFontOfSize:15.0]
                                                    color:[UIColor secondaryLabelColor]];
     descriptionLabel.numberOfLines = 0;
@@ -96,6 +97,7 @@
                                                    keyboardType:UIKeyboardTypeASCIICapable
                                             autocapitalization:UITextAutocapitalizationTypeAllCharacters
                                                       formatter:[self licenseFormatter]]];
+    [contentStack addArrangedSubview:[self displayFormattingDemoSection]];
     [contentStack addArrangedSubview:[self businessDelegateDemoSection]];
     [contentStack addArrangedSubview:[self manualAssignmentDemoSection]];
 
@@ -149,6 +151,55 @@
     [stack addArrangedSubview:titleLabel];
     [stack addArrangedSubview:detailLabel];
     [stack addArrangedSubview:textField];
+
+    [NSLayoutConstraint activateConstraints:@[
+        [stack.topAnchor constraintEqualToAnchor:container.topAnchor constant:16.0],
+        [stack.leadingAnchor constraintEqualToAnchor:container.leadingAnchor constant:16.0],
+        [stack.trailingAnchor constraintEqualToAnchor:container.trailingAnchor constant:-16.0],
+        [stack.bottomAnchor constraintEqualToAnchor:container.bottomAnchor constant:-16.0],
+    ]];
+
+    return container;
+}
+
+- (UIView *)displayFormattingDemoSection {
+    YDInputFormatter *formatter = [self phoneFormatter];
+    NSString *rawValue = @"13812345678";
+    NSString *formattedValue = [formatter formattedTextFromText:rawValue];
+
+    UIView *container = [[UIView alloc] init];
+    container.translatesAutoresizingMaskIntoConstraints = NO;
+    container.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    container.layer.cornerRadius = 16.0;
+
+    UIStackView *stack = [[UIStackView alloc] init];
+    stack.translatesAutoresizingMaskIntoConstraints = NO;
+    stack.axis = UILayoutConstraintAxisVertical;
+    stack.spacing = 10.0;
+    [container addSubview:stack];
+
+    UILabel *titleLabel = [self titleLabelWithText:@"纯文本格式化显示"
+                                              font:[UIFont boldSystemFontOfSize:18.0]
+                                             color:[UIColor labelColor]];
+    UILabel *detailLabel = [self titleLabelWithText:@"不绑定 UITextField 输入事件时，也可以直接把原始文本转换成格式化展示文本。"
+                                               font:[UIFont systemFontOfSize:13.0]
+                                              color:[UIColor secondaryLabelColor]];
+    detailLabel.numberOfLines = 0;
+
+    UILabel *rawLabel = [self titleLabelWithText:[NSString stringWithFormat:@"原始文本: %@", rawValue]
+                                            font:[UIFont monospacedDigitSystemFontOfSize:13.0 weight:UIFontWeightRegular]
+                                           color:[UIColor secondaryLabelColor]];
+    rawLabel.numberOfLines = 0;
+
+    UILabel *formattedLabel = [self titleLabelWithText:[NSString stringWithFormat:@"格式化结果: %@", formattedValue]
+                                                  font:[UIFont monospacedDigitSystemFontOfSize:15.0 weight:UIFontWeightSemibold]
+                                                 color:[UIColor labelColor]];
+    formattedLabel.numberOfLines = 0;
+
+    [stack addArrangedSubview:titleLabel];
+    [stack addArrangedSubview:detailLabel];
+    [stack addArrangedSubview:rawLabel];
+    [stack addArrangedSubview:formattedLabel];
 
     [NSLayoutConstraint activateConstraints:@[
         [stack.topAnchor constraintEqualToAnchor:container.topAnchor constant:16.0],
@@ -219,10 +270,10 @@
     stack.spacing = 10.0;
     [container addSubview:stack];
 
-    UILabel *titleLabel = [self titleLabelWithText:@"手动赋值后格式化"
+    UILabel *titleLabel = [self titleLabelWithText:@"直接设置 TextField 显示文本"
                                               font:[UIFont boldSystemFontOfSize:18.0]
                                              color:[UIColor labelColor]];
-    UILabel *detailLabel = [self titleLabelWithText:@"直接赋值 textField.text 后，再调用 yd_applyFormattingWithFormatter: 刷新展示和光标。"
+    UILabel *detailLabel = [self titleLabelWithText:@"直接调用 yd_setText:withFormatter: 把原始值格式化后显示到 UITextField。"
                                                font:[UIFont systemFontOfSize:13.0]
                                               color:[UIColor secondaryLabelColor]];
     detailLabel.numberOfLines = 0;
@@ -235,7 +286,7 @@
     self.manualAssignmentTextField = textField;
     [self fillManualAssignmentExample];
 
-    UIButton *fillButton = [self demoButtonWithTitle:@"重新赋值并格式化"
+    UIButton *fillButton = [self demoButtonWithTitle:@"重新设置并格式化"
                                               action:@selector(fillManualAssignmentExample)];
 
     [stack addArrangedSubview:titleLabel];
@@ -298,8 +349,8 @@
 }
 
 - (void)fillManualAssignmentExample {
-    self.manualAssignmentTextField.text = @"8888888888888888";
-    [self.manualAssignmentTextField yd_applyFormattingWithFormatter:self.manualAssignmentFormatter];
+    [self.manualAssignmentTextField yd_setText:@"8888888888888888"
+                                 withFormatter:self.manualAssignmentFormatter];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

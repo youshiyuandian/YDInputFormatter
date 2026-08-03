@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
   shouldChangeCharactersInRange:(NSRange)range
               replacementString:(nullable NSString *)string;
 
+- (void)yd_setText:(nullable NSString *)text withFormatter:(nullable YDInputFormatter *)formatter;
 - (void)yd_applyFormattingWithFormatter:(nullable YDInputFormatter *)formatter;
 
 @end
