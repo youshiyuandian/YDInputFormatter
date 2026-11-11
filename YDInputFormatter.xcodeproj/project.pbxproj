@@ -17,6 +17,7 @@
 		74851903301C8A0000A3C2F4 /* YDInputFormatterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 74851916301C8A0000A3C2F4 /* YDInputFormatterEngine.m */; };
 		74851904301C8A0000A3C2F4 /* YDInputFormatterResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 74851918301C8A0000A3C2F4 /* YDInputFormatterResult.m */; };
 		74851905301C8A0000A3C2F4 /* UITextField+YDInputFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7485191A301C8A0000A3C2F4 /* UITextField+YDInputFormatter.m */; };
+		74851925301C8A0000A3C2F4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 74851924301C8A0000A3C2F4 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		74851918301C8A0000A3C2F4 /* YDInputFormatterResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDInputFormatterResult.m; sourceTree = "<group>"; };
 		74851919301C8A0000A3C2F4 /* UITextField+YDInputFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+YDInputFormatter.h"; sourceTree = "<group>"; };
 		7485191A301C8A0000A3C2F4 /* UITextField+YDInputFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+YDInputFormatter.m"; sourceTree = "<group>"; };
+		74851924301C8A0000A3C2F4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		74851921301C8A0000A3C2F4 /* Formatter */ = {
 			isa = PBXGroup;
 			children = (
+				74851924301C8A0000A3C2F4 /* PrivacyInfo.xcprivacy */,
 				74851922301C8A0000A3C2F4 /* Core */,
 				74851923301C8A0000A3C2F4 /* UIKit */,
 			);
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				748518E5301C74C900A3C2F4 /* Assets.xcassets in Resources */,
+				74851925301C8A0000A3C2F4 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

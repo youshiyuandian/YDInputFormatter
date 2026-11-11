@@ -30,14 +30,14 @@
 ```ruby
 source 'https://cdn.cocoapods.org/'
 
-pod 'YDInputFormatter', '0.1.2'
+pod 'YDInputFormatter', '0.1.3'
 ```
 
 如果你当前环境里的 CocoaPods CDN 还没有同步到这个版本，可以先临时使用
 GitHub tag 方式安装：
 
 ```ruby
-pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.2'
+pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.3'
 ```
 
 ## 快速开始

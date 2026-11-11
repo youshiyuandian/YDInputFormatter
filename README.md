@@ -31,14 +31,14 @@ deletion, middle insertion, and paste.
 ```ruby
 source 'https://cdn.cocoapods.org/'
 
-pod 'YDInputFormatter', '0.1.2'
+pod 'YDInputFormatter', '0.1.3'
 ```
 
 If the CocoaPods CDN has not propagated to your environment yet, you can
 temporarily install from GitHub:
 
 ```ruby
-pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.2'
+pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.3'
 ```
 
 ## Quick Start
