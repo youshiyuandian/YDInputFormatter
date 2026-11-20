@@ -20,14 +20,12 @@ git status --short --branch
 
 - [ ] [YDInputFormatter.podspec](/Users/lzx/Desktop/YDInputFormatter/YDInputFormatter.podspec)
 - [ ] [README.md](/Users/lzx/Desktop/YDInputFormatter/README.md)
-- [ ] [README.zh-CN.md](/Users/lzx/Desktop/YDInputFormatter/README.zh-CN.md)
 - [ ] 新建或更新 `RELEASE_NOTES_0.1.1.md`
 
 当前仓库里 `0.1.0` 出现的位置可作为替换参考：
 
 - `YDInputFormatter.podspec`
 - `README.md`
-- `README.zh-CN.md`
 - `RELEASE_NOTES_0.1.0.md`
 
 推荐检查命令：

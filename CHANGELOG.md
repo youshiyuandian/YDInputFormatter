@@ -2,6 +2,13 @@
 
 All notable changes to `YDInputFormatter` will be documented in this file.
 
+## [0.1.4] - 2026-11-20
+
+### Removed
+
+- Removed `README.zh-CN.md` and kept English `README.md` as the sole
+  documentation entry point
+
 ## [0.1.3] - 2026-11-11
 
 ### Added
@@ -58,6 +65,7 @@ All notable changes to `YDInputFormatter` will be documented in this file.
 - CocoaPods packaging for iOS 13.0+
 - Demo app included in the repository
 
+[0.1.4]: https://github.com/youshiyuandian/YDInputFormatter/releases/tag/0.1.4
 [0.1.3]: https://github.com/youshiyuandian/YDInputFormatter/releases/tag/0.1.3
 [0.1.2]: https://github.com/youshiyuandian/YDInputFormatter/releases/tag/0.1.2
 [0.1.1]: https://github.com/youshiyuandian/YDInputFormatter/releases/tag/0.1.1

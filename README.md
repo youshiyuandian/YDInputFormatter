@@ -1,7 +1,5 @@
 # YDInputFormatter
 
-[简体中文](README.zh-CN.md)
-
 `YDInputFormatter` is an Objective-C input formatting component for `UITextField`.
 It is designed for grouped input such as bank cards, phone numbers, identity
 numbers, and license keys while keeping caret movement stable during typing,
@@ -31,14 +29,14 @@ deletion, middle insertion, and paste.
 ```ruby
 source 'https://cdn.cocoapods.org/'
 
-pod 'YDInputFormatter', '0.1.3'
+pod 'YDInputFormatter', '0.1.4'
 ```
 
 If the CocoaPods CDN has not propagated to your environment yet, you can
 temporarily install from GitHub:
 
 ```ruby
-pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.3'
+pod 'YDInputFormatter', :git => 'https://github.com/youshiyuandian/YDInputFormatter.git', :tag => '0.1.4'
 ```
 
 ## Quick Start
